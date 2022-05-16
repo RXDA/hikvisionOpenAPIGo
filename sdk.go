@@ -121,7 +121,7 @@ func (hk HKConfig) initRequest(header map[string]string, url, body string, isPos
 			return err
 		}
 	}
-	header["x-ca-timestamp"] = strconv.FormatInt(time.Now().UnixMilli(), 10)
+	header["x-ca-timestamp"] = strconv.FormatInt(time.Now().UnixNano() / 1e6, 10)
 	uid, err := uuid.NewV4()
 	if err != nil {
 		return err
